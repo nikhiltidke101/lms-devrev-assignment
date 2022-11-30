@@ -1,6 +1,7 @@
-.App {
+/* .App {
   text-align: center;
 }
+
 
 .App-logo {
   height: 40vmin;
@@ -22,17 +23,47 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+} */
+body{
+  margin: 0;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #080808;
 }
 
-.App-link {
-  color: #61dafb;
+.App{
+  display: flex;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F5EBE0;
+  height: 100vh;
+  width: 300px;
+}
+
+.booklist{
+  position: relative;
+  display: flex;
+  background-color: #F0DBDB;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.list-group{
+  display: grid;
+  list-style: none;
+  margin-bottom: 40px;
+}
+
+.list-group li{
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.1);
+  background-color: white;
 }
