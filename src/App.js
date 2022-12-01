@@ -9,14 +9,14 @@ import Pagination from './utils/Pagination';
 function App() {
   const [books, setBooks] = useState([]);
   const [bookCount, setBookCount] = useState([]);
-  const [params, setParams] = useState({author:"rusking bond"});
+  const [params, setParams] = useState({author:"ruskin bond"});
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [booksPerPage, setBooksPerPage] = useState(10);
 
   const fetchData = async () => {
     setLoading(true);
-    const res = await axios.get('https://www.googleapis.com/books/v1/volumes'
+    await axios.get('https://www.googleapis.com/books/v1/volumes'
     , {
       params: {
         q: `
@@ -32,18 +32,18 @@ function App() {
         maxResults:"40",
       }
     }
-    );
+    ).then((res) => {
+      setBooks(res.data.items.filter(isDate));
+      // console.log(res.data);
+      setBookCount(res.data.totalItems);
+    });
 
-    setBooks(res.data.items.filter(isDate));
-    console.log(res.data);
-    setBookCount(res.data.totalItems);
     setLoading(false);
   }
 
   useEffect(() => {
-    setBooks([]);
     fetchData();
-  }, []);
+  }, [params]);
 
   // Get current Posts
   const indexOfLastBook = currentPage * booksPerPage;
@@ -56,24 +56,23 @@ function App() {
   
   const trigger = (data) => {
     setParams(data);
-    fetchData();
   }
 
   const isDate = (value) => {
-    // console.log(params.date);
-    // if(params.date){ 
-    //   var date = params?.date?.split("-");
-    //   var date2 = value.volumeInfo.publishedDate.split("-")
-    //   if((date[2] === date2[2] && date[0] === date2[0]) || (date[1] === date2[1] && date[0] === date2[0]) || date[0] == date2[0]){
-    //     return true;
-    //   }else{
-    //     return false;
-    //   }
+    console.log(params.date);
+    if(params.date){ 
+      var date = params?.date?.split("-");
+      var date2 = value.volumeInfo.publishedDate.split("-")
+      if((date[2] === date2[2] && date[0] === date2[0]) || (date[1] === date2[1] && date[0] === date2[0]) || date[0] == date2[0]){
+        return true;
+      }else{
+        return false;
+      }
 
-    //  }else {
-    //   return true;
-    //   }
+     }else {
       return true;
+      }
+      // return true;
   }
 
 
