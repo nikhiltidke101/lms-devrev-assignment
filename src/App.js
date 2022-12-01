@@ -59,20 +59,19 @@ function App() {
   }
 
   const isDate = (value) => {
-    console.log(params.date);
-    if(params.date){ 
-      var date = params?.date?.split("-");
-      var date2 = value.volumeInfo.publishedDate.split("-")
-      if((date[2] === date2[2] && date[0] === date2[0]) || (date[1] === date2[1] && date[0] === date2[0]) || date[0] == date2[0]){
-        return true;
-      }else{
-        return false;
-      }
-
-     }else {
+    // console.log(params.date);
+    // if(params.date != undefined){ 
+    //   var date = params.date?.toString().split("-");
+    //   var date2 = value.volumeInfo.publishedDate?.split("-")
+    //   if((date[2] === date2[2] && date[0] === date2[0]) || (date[1] === date2[1] && date[0] === date2[0]) || date[0] == date2[0]){
+    //     return true;
+    //   }else{
+    //     return false;
+    //   }
+    // }else{
+    //     return true;
+    //   }
       return true;
-      }
-      // return true;
   }
 
 

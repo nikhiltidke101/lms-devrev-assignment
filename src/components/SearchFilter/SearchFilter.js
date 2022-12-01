@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import "./searchFilter.css";
 
 const SearchFilter = ({trigger}) => {
-    const [data, setData] = useState({ author: "Ruskin Bond", title: "", publisher: "", subject:"", date: 1900})
+    const [data, setData] = useState({ author: "Ruskin Bond", title: "", publisher: "", subject:"", date: ""})
 
   const updateData = e => {
     const fieldName = e.target.name
