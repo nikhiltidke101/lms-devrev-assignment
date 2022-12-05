@@ -1,7 +1,7 @@
 import React from 'react'
 import "./pagination.css"
 
-const Pagination = ({booksPerPage, totalBooks, paginate}) => {
+const Pagination = ({booksPerPage, totalBooks, paginate, loadMore, moreData}) => {
     const pageNumbers = [];
     for(let i=1; i<=Math.ceil(totalBooks/booksPerPage); i++){
         pageNumbers.push(i);
@@ -13,13 +13,27 @@ const Pagination = ({booksPerPage, totalBooks, paginate}) => {
                 <li key={number} className="page-item">
                     <a onClick={(e) => {
                         e.preventDefault();
-                        paginate(number)
+                            paginate(number)
                         }} 
                         href="!#" className='page-link'>
                         {number}
                     </a>
                 </li>
             ))}
+            {
+                loadMore ?
+                <li className="page-item">
+                    <a 
+                        onClick={(e) => {
+                        e.preventDefault();
+                            moreData();
+                        }} 
+                        href="!#" className='page-link'>
+                        Load More
+                    </a>
+                </li> : <></>
+            }
+            
         </ul>
     </div>
   )

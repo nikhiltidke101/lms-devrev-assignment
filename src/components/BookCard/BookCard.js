@@ -5,14 +5,17 @@ const BookCard = ({title, imageUrl, publisher, authors, categories, publishedDat
     return (
     <div class="book-card">
         <div class="content-wrapper">
-            <img src={imageUrl} alt="" class="book-card-img"/>
+            <img src={imageUrl ? imageUrl : "./no_cover_available.png"} alt="" class="book-card-img"/>
             
             <div className='content'>
                 <div className='book-title'>{title}</div>
+                
                 {
                     publisher && (<div className='publisher'>Publisher: {publisher}</div>)
                 } 
+                
                 {publishedDate && <div className='publisher'>Published Date: {publishedDate}</div>}
+                
                 {
                     authors && (<p className='authors'>By {
                         authors.map(author => {
@@ -32,9 +35,9 @@ const BookCard = ({title, imageUrl, publisher, authors, categories, publishedDat
                         </p>
                     )
                 }
-                <div>
-                    <a className='previewLink' href={previewLink}>Preview</a>
-                </div>
+                
+                <a className='previewLink' href={previewLink}>Preview</a>
+                
             </div>
         </div>
     </div>
